@@ -9,11 +9,18 @@
 
 
 #EL SCRIPT SOLO FUNCIONA CON RUTAS ABSOLUTAS, NDAD DE RELATIVAS
+#NO SE MODIFICAN NOMBRES DE DIRECTORIOS
+#AL PASARLE COMO PARAMETRO EL DIRECTORIO LO TENGO QUE HACER PONIENDOLE LA / AL FINAL	
+#FUNCIONA SI LE PASO /etc/ no funciona si le paso /etc
+
+
+
 
 renombrarArchivosInicio(){
     for nombreArchivo in `ls $1` 
     do 
         #echo "$nombreArchivo$3"
+	echo "$nombreArchivo $1$nombreArchivo$3"
         mv $1$nombreArchivo $1$nombreArchivo$3
     done
 }
@@ -27,6 +34,7 @@ renombrarArchivosFinal(){
 
 
 #Chequeo que el primer parametro sea un directorio
+echo "$1 $2 $3"
 
 if [ -d $1 ] && [ $# -eq 3 ]
 then
